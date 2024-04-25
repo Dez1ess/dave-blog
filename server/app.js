@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-const whitelist = ["https://dave-blog-nine.vercel.app", "http://localhost:3000"];
+const whitelist = ["*"];
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
