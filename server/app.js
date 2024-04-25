@@ -9,21 +9,7 @@ import mongoose from "mongoose";
 dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 8000;
-
-const whitelist = ["*"];
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(router);
 app.use(express.static("./uploads"));
