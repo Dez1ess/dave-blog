@@ -30,13 +30,15 @@ const connectDB = async () => {
   try {
     await mongoose.connect(process.env.URI);
     console.log("connected to database successfully.");
-    app.listen(PORT, () => {
-      console.log("Server is started");
-    });
   } catch (error) {
     console.log(error);
   }
 };
+
 connectDB();
+
+app.listen(PORT, () => {
+  console.log("Server is started");
+});
 
 export default app;
