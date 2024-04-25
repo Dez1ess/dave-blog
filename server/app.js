@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8000;
 app.use(cors());
 app.use(bodyParser.json());
 app.use(router);
-app.use(express.static("./uploads"));
+// app.use(express.static("./uploads"));
 
 const connectDB = async () => {
   try {
