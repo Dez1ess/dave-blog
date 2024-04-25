@@ -14,6 +14,17 @@ app.use(bodyParser.json());
 app.use(router);
 app.use(express.static("./uploads"));
 
+const connectDB = async () => {
+  try {
+    await mongoose.connect(process.env.URI);
+    console.log("connected to database successfully.");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+connectDB();
+
 app.get("/", checkUser, (req, res) => {
   const username = res.locals.username;
   const response = {
@@ -25,17 +36,6 @@ app.get("/", checkUser, (req, res) => {
   }
   res.status(200).json(response);
 });
-
-const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.URI);
-    console.log("connected to database successfully.");
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-connectDB();
 
 app.listen(PORT, () => {
   console.log("Server is started");
